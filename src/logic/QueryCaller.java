@@ -12,14 +12,12 @@ public class QueryCaller {
 	//Den här är samma kod som skickade jag gjorde den bara en klass som man kan återanvända
 
     private static final String URL = "http://api.trafikinfo.trafikverket.se/v1/data.json";
-
-    private static  String query;
     public QueryCaller() {}
     
     
     //This method makes the call
     public void call(String query) throws IOException {
-    	this.query=query;
+    	
     	URL obj = new URL(URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setDoOutput(true);

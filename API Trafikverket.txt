@@ -1,0 +1,60 @@
+
+Väder stationer
+
+<REQUEST>
+      <LOGIN authenticationkey="openapiconsolekey" />
+      <QUERY objecttype="WeatherStation">
+            <FILTER>
+                <OR>
+                  <EQ name="Name" value="Forsbacka" />
+                  <EQ name="Name" value="Storvik" />
+                  <EQ name="Name" value="Hoforsbacken" />,
+                  <EQ name="Name" value="Gävle" />
+                </OR>
+            </FILTER>
+            <EXCLUDE>MeasurementHistory</EXCLUDE>
+      </QUERY>
+</REQUEST>
+
+VäglagsKameror
+
+<REQUEST>
+      <LOGIN authenticationkey="openapiconsolekey" />
+      <QUERY objecttype="Camera">
+            <FILTER>
+                <OR>
+                  <EQ name="Name" value="Forsbacka" />
+                  <EQ name="Name" value="Storviksstationen" />
+                  <EQ name="Name" value="Hoforsbacken" />,
+                  <EQ name="Name" value="Gävle" />
+                </OR>
+            </FILTER>
+      </QUERY>
+</REQUEST>
+
+Väglag
+
+<REQUEST>
+      <LOGIN authenticationkey="openapiconsolekey" />
+      <QUERY objecttype="RoadCondition">
+            <FILTER>
+                <EQ name="LocationText" value="E 16 Gävle - Hofors" />
+            </FILTER>
+            <EXCLUDE>Geometry</EXCLUDE>
+      </QUERY>
+</REQUEST>
+
+TrafikSituationer
+
+<REQUEST>
+      <LOGIN authenticationkey="openapiconsolekey" />
+      <QUERY objecttype="Situation">
+            <FILTER>
+                <AND>                    
+                     <EQ name="Deviation.RoadNumberNumeric" value="16" />
+                     <EQ name="Deviation.CountyNo" value="21" />
+		     <GT name="ModifiedTime" value=$MODIFIEDTIME />
+                </AND>
+            </FILTER>
+      </QUERY>
+</REQUEST>

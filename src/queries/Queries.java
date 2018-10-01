@@ -1,24 +1,46 @@
 package queries;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Queries {
 	
-	//Här skulle du kunna göra alla queryn och sätta get metod till dem
-	private final String testQuery="<REQUEST>\r\n" + 
-    		"      <LOGIN authenticationkey=\"b9f437d1289e44eebafe6535502b1fd2\" />\r\n" + 
-    		"      <QUERY objecttype=\"TrainMessage\">\r\n" + 
-    		"            <FILTER>\r\n" + 
-    		"                  <EQ name=\"AffectedLocation\" value=\"Cst\" />\r\n" + 
-    		"            </FILTER>\r\n" + 
-    		"            <INCLUDE>StartDateTime</INCLUDE>\r\n" + 
-    		"            <INCLUDE>LastUpdateDateTime</INCLUDE>\r\n" + 
-    		"            <INCLUDE>ExternalDescription</INCLUDE>\r\n" + 
-    		"            <INCLUDE>ReasonCodeText</INCLUDE>\r\n" + 
-    		"      </QUERY>\r\n" + 
-    		"</REQUEST>";
-
-	public String getTestQuery() {
-		return testQuery;
+	// Takes a queryfile
+	public String queryParser(File queryFile) {
+		
+		String line;
+		
+		try {
+			FileReader fr = new FileReader(queryFile);
+			BufferedReader in = new BufferedReader(fr);
+			line = in.readLine();
+			
+			StringBuilder sb = new StringBuilder();
+					
+		     while ( line != null ) 
+		     {
+		       sb.append(line);
+		       sb.append(System.getProperty("line.separator"));
+		       line = in.readLine();
+		     }
+		     
+		     in.close();
+		     // för loggning
+		     System.out.println( sb.toString() );
+		     
+		     return sb.toString();
+		     
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
+		return ""; 
 	}
-	
 
 }

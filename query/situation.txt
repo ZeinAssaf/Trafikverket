@@ -1,0 +1,11 @@
+<REQUEST>
+      <LOGIN authenticationkey="b9f437d1289e44eebafe6535502b1fd2" />
+      <QUERY objecttype="Situation">
+            <FILTER>
+                <AND>                    
+                     <EQ name="Deviation.RoadNumberNumeric" value="16" />
+                     <EQ name="Deviation.CountyNo" value="21" />
+                </AND>
+            </FILTER>
+      </QUERY>
+</REQUEST>

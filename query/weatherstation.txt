@@ -1,0 +1,14 @@
+<REQUEST>
+      <LOGIN authenticationkey="b9f437d1289e44eebafe6535502b1fd2" />
+      <QUERY objecttype="WeatherStation">
+            <FILTER>
+                <OR>
+                  <EQ name="Name" value="Forsbacka" />
+                  <EQ name="Name" value="Storvik" />
+                  <EQ name="Name" value="Hoforsbacken" />,
+                  <EQ name="Name" value="Gävle" />
+                </OR>
+            </FILTER>
+            <EXCLUDE>MeasurementHistory</EXCLUDE>
+      </QUERY>
+</REQUEST>

@@ -11,7 +11,7 @@ import java.net.URL;
 public class QueryCaller {
 	//Den här är samma kod som skickade jag gjorde den bara en klass som man kan återanvända
 
-    private static final String URL = "http://api.trafikinfo.trafikverket.se/v1/data.json";
+    private static final String URL = "http://api.trafikinfo.trafikverket.se/v1.3/data.xml";
     public QueryCaller() {}
     
     
@@ -22,18 +22,19 @@ public class QueryCaller {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setDoOutput(true);
         con.setRequestMethod("POST");
-        con.setRequestProperty("Content-Type", "application/xml; charset=ISO-8859-1");
+        con.setRequestProperty("Content-Type", "application/xml; charset=UTF-8");
         OutputStream out = new DataOutputStream(con.getOutputStream());
         out.write(query.getBytes());
         out.flush();
         out.close();
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String input;
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
 
         while ((input = in.readLine()) != null) {
             response.append(input);
         }
+        System.out.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
         System.out.println(response.toString());
         in.close();
     }

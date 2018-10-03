@@ -9,14 +9,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class QueryCaller {
-	//Den här är samma kod som skickade jag gjorde den bara en klass som man kan återanvända
+	/**
+	 * This class makes the call to trafikverkets API
+	 * Call method works by passing the query as an attribute and it returns the response as a string  
+	 */
 
     private static final String URL = "http://api.trafikinfo.trafikverket.se/v1.3/data.xml";
     public QueryCaller() {}
     
     
     //This method makes the call
-    public void call(String query) throws IOException {
+    public String call(String query) throws IOException {
     	
     	URL obj = new URL(URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -34,8 +37,7 @@ public class QueryCaller {
         while ((input = in.readLine()) != null) {
             response.append(input);
         }
-        System.out.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-        System.out.println(response.toString());
         in.close();
+        return response.toString();
     }
 }

@@ -1,5 +1,5 @@
 <REQUEST>
-      <LOGIN authenticationkey="b9f437d1289e44eebafe6535502b1fd2" />
+      <LOGIN authenticationkey="c03705b823954e14b45027e0b833831b" />
       <QUERY objecttype="Camera">
             <FILTER>
                 <OR>
